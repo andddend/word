@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День пуговиц — Этап 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="stage-badge">Этап 3 из 4</div>
+        <div class="image-wrapper">
+            <img src="3.png" alt="Задание 3">
+        </div>
+        <p class="task-text">
+            Загадано слово. В полях — числовые выражения.
+        </p>
+        <div class="form-group">
+            <input type="text" id="answerInput" placeholder="Введите загаданное слово..." autocomplete="off">
+            <button onclick="checkAnswer()">Проверить</button>
+        </div>
+        <div id="feedback" class="message"></div>
+    </div>
+
+    <script>
+        const CORRECT_ANSWERS = ["столовая"]; 
+
+        function checkAnswer() {
+            const userVal = document.getElementById('answerInput').value.trim().toLowerCase();
+            const feedback = document.getElementById('feedback');
+
+            if (CORRECT_ANSWERS.includes(userVal)) {
+                feedback.className = "message success";
+                feedback.innerHTML = 'Отлично! Отправляйтесь дальше. Часть кода: 2';
+            } else {
+                feedback.className = "message error";
+                feedback.textContent = "Неверно. Попробуйте еще раз!";
+            }
+        }
+
+        document.getElementById('answerInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkAnswer();
+        });
+    </script>
+</body>
+</html>
